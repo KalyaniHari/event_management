@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manage Events</title>
+</head>
+<body>
+    <h1>Manage Events</h1>
+
+    <!-- Form to create a new event -->
+    <h2>Create a New Event</h2>
+    <form method="POST">
+        <label for="name">Event Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" required><br>
+        <label for="location">Location:</label>
+        <input type="text" name="location" required><br>
+        <label for="capacity">Capacity:</label>
+        <input type="number" name="capacity" required><br>
+        <button type="submit">Create Event</button>
+    </form>
+
+    <!-- Table to display existing events -->
+    <h2>Existing Events</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Capacity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event[0] }}</td>
+                <td>{{ event[1] }}</td>
+                <td>{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>{{ event[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
