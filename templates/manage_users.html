@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Users{% endblock %}
+
+{% block content %}
+<h1>Manage Users</h1>
+
+{% if users %}
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>
+                <form method="POST" action="/admin/users/delete/{{ user[0] }}" style="display: inline;">
+                    <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer;">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No users found.</p>
+{% endif %}
+
+{% endblock %}

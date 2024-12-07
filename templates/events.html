@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Available Events</title>
-</head>
-<body>
-    <h1>Available Events</h1>
-    <table border="1">
+{% extends "base.html" %}
+
+{% block title %}Available Events{% endblock %}
+
+{% block content %}
+<h1>Available Events</h1>
+
+<div class="table-container">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Date</th>
                 <th>Location</th>
-                <th>Capacity</th>
+                <th>Seats left</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -24,10 +25,70 @@
                 <td>{{ event[2] }}</td>
                 <td>{{ event[3] }}</td>
                 <td>{{ event[4] }}</td>
-                <td><a href="/register_event/{{ event[0] }}">Register</a></td>
+                <td>
+                    <a href="/register_event/{{ event[0] }}" class="btn btn-register">Register</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+</div>
+
+<!-- Styling -->
+<style>
+    .table-container {
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tr:hover {
+        background-color: #f9f9f9;
+    }
+
+    /* Buttons */
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        text-decoration: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .btn-register {
+        background-color: #04AA6D;
+    }
+
+    .btn-register:hover {
+        background-color: #028A5E;
+    }
+
+    /* Message Styling */
+    h1 {
+        color: #333;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}

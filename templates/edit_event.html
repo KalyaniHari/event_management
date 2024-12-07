@@ -1,19 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}User Login{% endblock %}
+{% block title %}Edit Event{% endblock %}
 
 {% block content %}
-<h1>User Login</h1>
+<h1>Edit Event</h1>
 
 <div class="form-container">
     <form method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" placeholder="Enter your username" required><br>
+        <label for="name">Event Name:</label>
+        <input type="text" name="name" value="{{ event[1] }}" placeholder="Enter event name" required><br>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" placeholder="Enter your password" required><br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" value="{{ event[2] }}" required><br>
 
-        <button type="submit" class="btn">Login</button>
+        <label for="location">Location:</label>
+        <input type="text" name="location" value="{{ event[3] }}" placeholder="Enter location" required><br>
+
+        <label for="capacity">Capacity:</label>
+        <input type="number" name="capacity" value="{{ event[4] }}" placeholder="Enter capacity" required><br>
+
+        <button type="submit" class="btn">Save Changes</button>
     </form>
 </div>
 

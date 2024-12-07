@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Admin Dashboard!</h1>
+
+<div class="dashboard-menu">
+    <ul>
+        <li><a href="/admin/events">📅 Manage Events</a></li>
+        <li><a href="/admin/users">👤 Manage Users</a></li>
+        <li><a href="/admin/registrations">📝 Manage Registrations</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+    </ul>
+</div>
+
+<style>
+    .dashboard-menu {
+        margin: 20px 0;
+    }
+
+    .dashboard-menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .dashboard-menu ul li {
+        margin: 10px 0;
+    }
+
+    .dashboard-menu ul li a {
+        display: block;
+        padding: 10px 15px;
+        color: white;
+        background-color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .dashboard-menu ul li a:hover {
+        background-color: #04AA6D;
+    }
+</style>
+{% endblock %}

@@ -1,16 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Admin Login</title>
-</head>
-<body>
-    <h1>Admin Login</h1>
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<h1>Admin Login</h1>
+<div class="form-container">
     <form method="POST">
         <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
+        <input type="text" name="username" placeholder="Enter your username" required><br>
+
         <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
-        <button type="submit">Login</button>
+        <input type="password" name="password" placeholder="Enter your password" required><br>
+
+        <button type="submit" class="btn">Login</button>
     </form>
-</body>
-</html>
+</div>
+
+<!-- Styling -->
+<style>
+    .form-container {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .form-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-container label {
+        font-weight: bold;
+    }
+
+    .form-container input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .form-container button {
+        padding: 10px;
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .form-container button:hover {
+        background-color: #028A5E;
+    }
+</style>
+{% endblock %}

@@ -1,33 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}My Events{% endblock %}
+{% block title %}Users for Event{% endblock %}
 
 {% block content %}
-<h1>My Registered Events</h1>
+<h1>Users Registered for Event {{ event_id }}</h1>
 
 <div class="table-container">
-    {% if events %}
+    {% if users %}
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Location</th>
+                <th>User ID</th>
+                <th>Username</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            {% for event in events %}
+            {% for user in users %}
             <tr>
-                <td>{{ event[0] }}</td>
-                <td>{{ event[1] }}</td>
-                <td>{{ event[2] }}</td>
-                <td>{{ event[3] }}</td>
-                <td>{{ event[4] }}</td>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
                 <td>
-                    <form method="POST" action="/user/cancel_registration/{{ event[0] }}" onsubmit="return confirm('Are you sure you want to cancel your registration?');">
-                        <button type="submit" class="btn btn-cancel">Cancel Registration</button>
+                    <form method="POST" action="/admin/events/{{ event_id }}/users/delete/{{ user[0] }}" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                        <button type="submit" class="btn btn-delete">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -35,7 +30,7 @@
         </tbody>
     </table>
     {% else %}
-    <p>You have not registered for any events yet.</p>
+    <p>No users are registered for this event.</p>
     {% endif %}
 </div>
 
@@ -48,7 +43,7 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 10px;
+        margin: 20px 0;
     }
 
     table, th, td {
@@ -78,26 +73,19 @@
         cursor: pointer;
     }
 
-    .btn-cancel {
+    .btn-delete {
         background-color: #f44336;
     }
 
-    .btn-cancel:hover {
+    .btn-delete:hover {
         background-color: #d32f2f;
     }
 
-    /* No Events Message */
+    /* No Users Message */
     p {
         color: #555;
         font-size: 16px;
         margin-top: 20px;
-        text-align: center;
-    }
-
-    h1 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
     }
 </style>
 {% endblock %}

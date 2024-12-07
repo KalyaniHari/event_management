@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}404 - Page Not Found{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <h1>404 - Page Not Found</h1>
+    <p>The page or resource you are trying to access does not exist.</p>
+    <a href="/" class="btn btn-primary">Return to Home</a>
+</div>
+
+<style>
+    .error-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    h1 {
+        color: #f44336;
+        font-size: 36px;
+    }
+    p {
+        color: #555;
+        font-size: 18px;
+        margin: 20px 0;
+    }
+    .btn {
+        padding: 10px 20px;
+        text-decoration: none;
+        color: white;
+        background-color: #04AA6D;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background-color: #028A5E;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Event Management System{% endblock %}</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            color: white;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        nav ul li a.active {
+            background-color: #04AA6D;
+        }
+
+        /* Page Content */
+        .content {
+            margin: 70px 20px 20px; /* Adjust for fixed navbar */
+        }
+
+        /* Flash Messages */
+        .flash {
+            position: fixed;
+            top: 70px; /* Below the navigation bar */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            max-width: 80%;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .flash.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .flash.error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .flash.warning {
+            background-color: #ff9800;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+            {% if session.get('admin_logged_in') %}
+                <li><a href="/admin/dashboard" class="{% if request.path == '/admin/dashboard' %}active{% endif %}">Admin Dashboard</a></li>
+                <li><a href="/admin/events" class="{% if request.path == '/admin/events' %}active{% endif %}">Manage Events</a></li>
+                <li><a href="/admin/users" class="{% if request.path == '/admin/users' %}active{% endif %}">Manage Users</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% elif session.get('user_id') %}
+                <li><a href="/user/dashboard" class="{% if request.path == '/user/dashboard' %}active{% endif %}">User Dashboard</a></li>
+                <li><a href="/user/my_events" class="{% if request.path == '/user/my_events' %}active{% endif %}">My Events</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/register" class="{% if request.path == '/register' %}active{% endif %}">Register</a></li>
+                <li><a href="/login" class="{% if request.path == '/login' %}active{% endif %}">User Login</a></li>
+                <li><a href="/admin/login" class="{% if request.path == '/admin/login' %}active{% endif %}">Admin Login</a></li>
+                <li><a href="/events" class="{% if request.path == '/events' %}active{% endif %}">View Events</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- JavaScript to Auto-Hide Flash Messages -->
+    <script>
+        // Automatically hide flash messages after 3 seconds
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                const flashMessages = document.querySelectorAll('.flash');
+                flashMessages.forEach(message => {
+                    message.style.opacity = '0';
+                    setTimeout(() => message.remove(), 600); // Wait for fade-out before removing
+                });
+            }, 3000); // 3-second delay
+        });
+    </script>
+
+    <!-- Page Content -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

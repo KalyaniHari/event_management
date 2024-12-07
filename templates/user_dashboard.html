@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<h1>Welcome to Your Dashboard!</h1>
+
+<div class="dashboard-menu">
+    <ul>
+        <li><a href="/events" class="btn btn-primary">Register for Events</a></li>
+        <li><a href="/user/my_events" class="btn btn-secondary">My Events</a></li>
+        <li><a href="/logout" class="btn btn-danger">Logout</a></li>
+    </ul>
+</div>
+
+<!-- Styling -->
+<style>
+    .dashboard-menu {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .dashboard-menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .dashboard-menu ul li {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 20px;
+        text-decoration: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background-color: #04AA6D;
+    }
+
+    .btn-primary:hover {
+        background-color: #028A5E;
+    }
+
+    .btn-secondary {
+        background-color: #2196F3;
+    }
+
+    .btn-secondary:hover {
+        background-color: #0b7dda;
+    }
+
+    .btn-danger {
+        background-color: #f44336;
+    }
+
+    .btn-danger:hover {
+        background-color: #d32f2f;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1>Welcome to the Event Management System!</h1>
+
+    <div class="cta-buttons">
+        <a href="/register" class="btn btn-register">Register</a>
+        <a href="/login" class="btn btn-login">User Login</a>
+        <a href="/admin/login" class="btn btn-admin">Admin Login</a>
+        <a href="/events" class="btn btn-events">View Events</a>
+    </div>
+</div>
+
+<!-- Styling -->
+<style>
+    .home-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        text-decoration: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .btn-register {
+        background-color: #04AA6D;
+    }
+
+    .btn-register:hover {
+        background-color: #028A5E;
+    }
+
+    .btn-login {
+        background-color: #2196F3;
+    }
+
+    .btn-login:hover {
+        background-color: #0b7dda;
+    }
+
+    .btn-admin {
+        background-color: #f44336;
+    }
+
+    .btn-admin:hover {
+        background-color: #d32f2f;
+    }
+
+    .btn-events {
+        background-color: #ff9800;
+    }
+
+    .btn-events:hover {
+        background-color: #e68a00;
+    }
+</style>
+{% endblock %}
