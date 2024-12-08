@@ -13,10 +13,11 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 def get_db_connection():
     try:
         return mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="kalql@12345",
-            database="event_management"
+            host="b8vhejmhepchuaqha9qy-mysql.services.clever-cloud.com",
+            user="uea8xq30wkuhcj2a",
+            password="hItigiUj7AKbUpgo9HDE",
+            database="b8vhejmhepchuaqha9qy",
+            port=3306  # Explicitly specify the port
         )
     except mysql.connector.Error as err:
         print(f"Database connection error: {err}")
